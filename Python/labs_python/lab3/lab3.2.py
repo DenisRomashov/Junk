@@ -1,3 +1,6 @@
+# 3.  Вход: nameYYYY.html, Выход: список начинается с года, продолжается имя-#ранг в алфавитном порядке.
+#  '2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' и т.д.
+
 import codecs
 import sys
 from bs4 import BeautifulSoup
@@ -61,13 +64,15 @@ def main():
           men.append(elem)
         else:
           women.append(elem)
+
+      #sorted(men, key=lambda field: field.rank)
       #Вывод ТОП 10
       print ("==========  TOP  10  MAN  ==========")
-      for name in sorted(men, key=lambda field: field.name)[:10]:
+      for name in sorted(men, key=lambda field: int(field.rank))[:10]:
         name.printVal()
       print("=====================================")
       print("=========  TOP  10  WOMEN  =========")
-      for name in sorted(women, key=lambda field: field.name)[:10]:
+      for name in sorted(women, key=lambda field: int(field.rank))[:10]:
         name.printVal()
       print("=====================================")
 
